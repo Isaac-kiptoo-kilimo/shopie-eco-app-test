@@ -1,0 +1,111 @@
+###
+POST http://localhost:3500/users/register/
+Content-Type: application/json
+
+{
+    "fullName": "Mildred Ochieng",
+    "profileImage": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "email": "mildred2@jitu.com",
+    "password": "12345678@Mo"
+}
+
+
+### login 
+POST http://localhost:3500/users/login/
+Content-Type: application/json
+
+{
+   "email": "mildred2@jitu.com",
+   "password": "12345678@Mo" 
+}
+
+### fetching all users
+GET http://localhost:3500/users/all
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiJhMjBmNDhlMy1iOGMxLTQ0NDYtODI3ZC1kMTZlMmUzMTc5NzEiLCJmdWxsTmFtZSI6Impvc2h1YSBvbW9uZGkiLCJlbWFpbCI6Impvc2h1YW9tb25kaTMzMzRAZ21haWwuY29tIiwicm9sZSI6ImN1c3RvbWVyIiwicmVzZXRUb2tlbiI6bnVsbCwiZXhwaXJ5VGltZSI6bnVsbCwid2VsY29tZWQiOnRydWUsImlzU2VuZCI6ZmFsc2UsInByb2ZpbGVJbWFnZSI6Imh0dHBzOi8vcG5nLnBuZ3RyZWUuY29tL3BuZy12ZWN0b3IvMjAyMjA4MTcvb3VybWlkL3BuZ3RyZWUtY2FydG9vbi1tYW4tYXZhdGFyLXZlY3Rvci1pbHVzdHJhdGlvbi1wbmctaW1hZ2VfNjExMTA2NC5wbmciLCJpYXQiOjE3MDEzNDI4NjAsImV4cCI6MTcwMTUxNTY2MH0.O-EwfyWGdVN9_rxKZzRkq-rWn6YAOusgYJE26DCcdcQ
+
+
+###update user
+PUT http://localhost:3500/users/update/7f7c87ea-960f-488e-876c-33ba1f32127f/
+Content-Type: application/json
+
+{
+    "fullName": "meshack2 kipsang2",
+    "email": "meshack3@gmail.com"
+}
+
+### fetching single user
+GET http://localhost:3500/users/singleUser/f99ac5ee-c9da-4f7c-b719-62ae36f5b6b5/
+token:  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI1ZjA5OWIwNS0zYTUxLTQyNWUtYTZjMS1kZGVjZjBkNWNhNTAiLCJmdWxsTmFtZSI6IklzYWFjIEtpbGltbyIsImVtYWlsIjoiaXNhYWNraWxpbW9rMkBnbWFpbC5jb20iLCJyb2xlIjoiY3VzdG9tZXIiLCJyZXNldFBhc3N3b3JkIjowLCJpYXQiOjE3MDA5MjEwNjIsImV4cCI6MTcwMTA5Mzg2Mn0.08NJL5E2e3sdd-0vy-sPxgai1RQ3xAmIDQ7JLCLPp2I
+
+
+### fetching user
+GET http://localhost:3500/users/userDetails/
+token:  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiJlNTFhNTQ4Yy0xNzdmLTQ0OWItOWI1Zi05OGE2NGJiMmQ5NGYiLCJmdWxsTmFtZSI6IjEyMzQ1Njc4QEpvIiwiZW1haWwiOiJqb3NodWFvbW9uZGkzMzM0QGdtYWlsLmNvbSIsInJvbGUiOiJjdXN0b21lciIsInJlc2V0UGFzc3dvcmRUb2tlbiI6bnVsbCwicmVzZXRQYXNzd29yZEV4cGlyZXMiOm51bGwsIndlbGNvbWVkIjp0cnVlLCJwcm9maWxlSW1hZ2UiOiJkYXRhOmltYWdlL2pwZWc7YmFzZTY0LC85ai80QUFRU2taSlJnQUJBUUFBQVFBQkFBRC8yd0NFQUFrR0J3Z0hCZ2tJQndnS0Nna0xEUllQRFF3TURSc1VGUkFXSUIwaUlpQWRIeDhrS0RRc0pDWXhKeDhmTFQwdE1UVTNPam82SXlzL1JEODRRelE1T2pjQkNnb0tEUXdOR2c4UEdqY2xIeVUzTnpjM056YzNOemMzTnpjM056YzNOemMzTnpjM056YzNOemMzTnpjM056YzNOemMzTnpjM056YzNOemMzTnpjM04vL0FBQkVJQUlZQWhnTUJJZ0FDRVFFREVRSC94QUFjQUFFQUFRVUJBUUFBQUFBQUFBQUFBQUFBQmdFREJBVUhBZ2oveEFBOEVBQUJCQUVCQlFRSUJBTUpBUUFBQUFBQkFBSURCQkVGQmhJaE1VRVRVV0Z4QnlJeVFvR1JvYkVVSTFMQmNwTGhKQ1l6UTFOVlk4THdGdi9FQUJzQkFBSURBUUVCQUFBQUFBQUFBQUFBQUFBRkF3UUdBZ0VILzhRQUtoRUFBZ0lCQXdJR0FRVUJBQUFBQUFBQUFBRUNBd1FSRWpFRklSTWlNa0ZSWVpFVmNZR2hzUlQvMmdBTUF3RUFBaEVERVFBL0FPNG9pSUFJaUlBSXFaVk04Y0lBOUlzTzdxZE9pM2V1V29ZUi93QWp3RnBwOXVkQmljV2kyNlFqL1RpY1I4OExpVmtZOHNsaFJiWjZJdC93U1ZGRXg2UWRFSndYV1I0OWlWbDF0dE5Dc093MjgyTTkwckhNK3BHRnlycTN3eVNXSGtSV3JnL3dTRkZZZ3RSV1l4SlhsamxZZmVZNEVLOWxTYWxaOWlxSWk5QUlpSUFJaUlBSWlJQUtoSUNIa296dGR0UEhvY0haUTdzbDZSdVdSbmswZnFLNWxKUldySktxcDJ6VUlMVnMyT3VhN1IwYURmdVM0Y2ZZamJ4Yy93QWd1YzYxdHhxZW9GMGRVL2c0RDBaeGVmTjNUNEtQWExkaTdaZll0eXVsbWVjdWM3N2VBVmhLcnN1YyswZXlOVmg5SXFwVzZ6elArajA5enBIbDhqblBlVHhjNDVKWGxhcld0WEduNGloRFh6dUdRSGNtanZLajc5YTFGN2lmeEpibm8xb0M2cHdyYlZ1SmNqcWxHUEx3OU5YOUUyd3FLR1I2NXFNZitlSGp1ZXdGWlVXMDFvSDgyR0Y0OE10WFV1bTNMalFqaDFyR2wyZXFKZlZ0MktVb2xwenlRdkhXTnhHVk10QzlJRThKYkRyRWZheDh1M2pHSER6SFg0TG0yIiwiaWF0IjoxNzAxMjM3NDczLCJleHAiOjE3MDE0MTAyNzN9.60M_G-fEaEu6KVQ44CurXc55fHr_7V1HaMwKT8h_BK4
+
+### reset password
+POST http://localhost:3500/users/initiate-password-reset/
+Content-Type: application/json
+
+{
+   "email": "joshuaomondi3334@gmail.com" 
+}
+
+### reset password
+POST http://localhost:3500/users/reset-password/
+Content-Type: application/json
+
+{
+   "email": "isaackilimok2@gmail.com",
+   "resetToken":"d299ae10-9188-4a2c-a145-b06562e454d9",
+   "newPassword":"12345678@ik" 
+}
+
+
+### checking user details
+GET http://localhost:3500/users/checkUserDetails/
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiJiNjc3ZDk2NC01ZTIxLTQyMDItOGJjNC1iNzc5ZDcyMzExZTAiLCJmdWxsTmFtZSI6Impvc2h1YSBvbW9uZGkiLCJlbWFpbCI6Impvc2h1YW9tb25kaTMzMzRAZ21haWwuY29tIiwicm9sZSI6ImN1c3RvbWVyIiwicmVzZXRQYXNzd29yZFRva2VuIjpudWxsLCJyZXNldFBhc3N3b3JkRXhwaXJlcyI6bnVsbCwid2VsY29tZWQiOnRydWUsImlhdCI6MTcwMTE4NzE4OSwiZXhwIjoxNzAxMzU5OTg5fQ.0hRlKsXGtEKP8_MP--ROem0zMLUBlePZA2-VFI2mmBY
+
+
+#### deleting user
+DELETE http://localhost:3500/users/delete/0df09010-748d-40a4-a46c-8443aed78f6c/
+
+###### creating new product
+POST http://localhost:3500/products/create
+Content-Type: application/json
+
+{
+    "name": "new Tv Stand45",
+    "shortDescription": "This is a good Tv stand for modern house12",
+    "price": 2200,
+    "image": "https://media.istockphoto.com/id/937510970/photo/smart-tv-mockup-with-black-glossy-screen-on-console-in-living-room.jpg?s=2048x2048&w=is&k=20&c=0_fvqr0Hrqd3NR9C5tsDF2ys6rQQBJEcYI_o6fyvlg0="
+}
+
+### fetching all products
+
+GET http://localhost:3500/products/all
+
+
+### fetching one product
+GET http://localhost:3500/products/single/82B7DAD8-DA99-40FB-B143-1D2AD2437D64/
+
+
+###### Updating product
+PUT  http://localhost:3500/products/update/1D8DE3C6-C6AF-4210-A006-FBAAF9706CF8/
+Content-Type: application/json
+
+{
+    "name": "Black Tv Stan45d 45",
+    "shortDescription": "They are hg remainin two in stock",
+    "price": 2800,
+    "image": "https://media.istockphoto.com/id/1430080532/photo/bedroom-without-sheets.webp?b=1&s=612x612&w=0&k=20&c=7_c725vsPgGRxQJLD13VAt5zOk6TvFT4KWZba4RYBfg="
+  }
+
+### search product by types
+GET http://localhost:3500/products/search?type=GA
+
+
+# Deleting a product
+###
+DELETE http://localhost:3500/products/delete/492776AB-44CC-4468-B1B2-207C35E2B87C/
+
+

@@ -1,0 +1,66 @@
+
+
+<!-- style="background-image: url('https://t4.ftcdn.net/jpg/01/19/11/55/360_F_119115529_mEnw3lGpLdlDkfLgRcVSbFRuVl6sMDty.jpg');" -->
+
+<app-navbar></app-navbar>
+<div class="center pt-4 bg-gray-100 bg-cover bg-center h-screen rounded "  >
+
+    <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+      <h2 class="mt-10 text-center text-4xl font-bold leading-9 tracking-tight text-white">Create an account</h2>
+    </div>
+ 
+  
+    <div class="register mt-10 sm:mx-auto w-full bg-gray-200 rounded-md  sm:max-w-sm shadow-2xl p-6">
+      
+      <form class=" space-y-6 mt-10" data-cy="signUpForm" [formGroup]="registrationForm" (ngSubmit)="registerUser()" >
+        <div>
+          <label for="profileImage"  class="block text-sm font-medium leading-6 text-gray-900">Profile image</label>
+          <div class="mt-2">
+            <input  formControlName="profileImage" data-cy="profileImage"  type="text" autocomplete="profileImage" required class="block w-full rounded-md border-0  py-2.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm px-2 sm:leading-6">
+            <div *ngIf="registrationForm.get('profileImage')?.touched && registrationForm.get('profileImage')?.hasError('required')" class="text-red-500">Full Name is required</div>
+          
+          </div>
+        </div>
+        <div>
+          <label for="fullname" class="block text-sm font-medium leading-6 text-gray-900">FullName</label>
+          <div data-cy="fullname" class="mt-2">
+            <input  formControlName="fullName" data-cy="fullName"  type="text" autocomplete="fullname" required class="block w-full rounded-md border-0  py-2.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm px-2 sm:leading-6">
+            <div *ngIf="registrationForm.get('fullName')?.touched && registrationForm.get('fullName')?.hasError('required')" class="text-red-500">Full Name is required</div>
+          </div>
+        </div>
+        <div >
+          <label for="email" class="block  font-medium leading-6 text-gray-900">Email address</label>
+          <div data-cy="email" class="mt-2">
+            <input type="email" formControlName="email" data-cy="registerEmail" autocomplete="email" required class="block w-full  rounded-md border-0 py-2.5 px-2 text-5xl text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+            <div *ngIf="registrationForm.get('email')?.touched && registrationForm.get('email')?.hasError('required')" class="text-red-500">Email is required</div>
+            
+          </div>
+        </div>
+  
+        <div >
+          <div class="flex items-center justify-between">
+            <label for="password" class="block  font-medium leading-6 text-gray-900">Password</label>
+           
+          </div>
+          <div data-cy="password" class="mt-2">
+            <input formControlName="password" data-cy="regPassword"  type="password" autocomplete="current-password" required class="block w-full rounded-md border-0  py-2.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+            <div *ngIf="registrationForm.get('password')?.touched && registrationForm.get('password')?.hasError('required')" class="text-red-500">Password is required</div>
+            
+          </div>
+        </div>
+  
+  
+        <div data-cy="submit-btn">
+          <button type="submit" data-cy="register-btn" class="flex w-full justify-center rounded-md bg-blue-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Sign up</button>
+        </div>
+      </form>
+        <!-- <div class="text-sm">
+        <a href="#" class="font-semibold text-black hover:text-blue-700">Forgot password?</a>
+      </div>   -->
+      <p class="mt-10 text-center text-sm text-black">
+       Already have an account?
+        <a routerLink = "/login" class="font-semibold leading-6 text-black hover:text-blue-700">Login here</a>
+      </p>
+    </div>
+  </div>
+  

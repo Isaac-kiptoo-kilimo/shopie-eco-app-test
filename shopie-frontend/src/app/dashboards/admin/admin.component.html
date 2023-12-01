@@ -1,0 +1,244 @@
+
+
+<body class="bg-gray-100 font-sans flex flex-col md:flex-row">
+  <aside class="w-full md:w-1/5 bg-gray-800 text-white p-4">
+    <h2 class="text-2xl font-semibold mb-4">User Dashboard</h2>
+    <nav>
+      <ul>
+        <li><a href="#" class="block py-3">Home</a></li>
+        <li><a routerLink="/customer" class="block py-3">Customers</a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <div class="container mx-auto sm:ml-1/5">
+ 
+    <div>
+
+      <div
+        class="flex flex-col md:flex-row justify-between items-center border-b-2 border-gray-300 pb-3 mb-5 w-full px-6"
+      >
+        <div class="flex text-gray-900 ems-center space-x-4">
+          <input
+            [(ngModel)]="filter"
+            type="text"
+            placeholder="Search..."
+            class="px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:border-blue-500"
+          />
+          <button
+            class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"
+          >
+            Search
+          </button>
+        </div>
+        <div class="">
+          <button
+            (click)="toggleProfileDropdown()"
+            class="nav-link rounded-md hover:bg-blue-600 hover:text-white p-1 focus:outline-none"
+          >
+            <img
+              [src]="userDetails.profileImage"
+              alt="Profile"
+              class="w-8 h-8 rounded-full"
+            />
+            <p>{{ userDetails.fullName }}</p>
+          </button>
+        </div>
+        <div
+          *ngIf="showProfileDropdown"
+          class="absolute right-0 mt-40 w-48 bg-white border rounded-md shadow-lg"
+        >
+          <!-- Dropdown content goes here -->
+          <a
+            (click)="isFormVisible = !isFormVisible"
+            class="block px-4 py-2 text-gray-800 hover:bg-gray-200"
+            >Edit Profile</a
+          >
+          <a
+            (click)="logout()"
+            class="block px-4 py-2 text-gray-800 hover:bg-gray-200"
+            >Logout</a
+          >
+        </div>
+      </div>
+    </div>
+    <div
+      class="rounded-tl-3xl bg-gradient-to-r flex justify-between m-6 px-4 from-blue-900 to-gray-800 p-4 shadow text-2xl text-white"
+    >
+      <h3 class="font-bold pl-2">Products</h3>
+
+      <div>
+        <button
+          type="button"
+          class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+          (click)="visible = !visible"
+        >
+          Add Product
+        </button>
+      </div>
+    </div>
+
+    <app-update-product></app-update-product>
+  </div>
+
+  <div
+    *ngIf="!visible"
+    class="relative newTour z-10 h-full"
+    aria-labelledby="slide-over-title"
+    role="dialog"
+    aria-modal="true"
+  >
+    <div
+      class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
+    ></div>
+
+    <div class="fixed createTour inset-0 overflow-hidden" *ngIf="!visible">
+      <div class="absolute inset-0 overflow-hidden">
+        <div
+          class="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10"
+        >
+          <div class="pointer-events-auto relative w-screen max-w-md">
+            <div
+              class="absolute left-0 top-0 -ml-8 flex pr-2 pt-4 sm:-ml-10 sm:pr-4"
+            >
+              <button
+                data-cy="close-create-tour-modal"
+                (click)="visible = !visible"
+                type="button"
+                class="btn relative rounded-md text-gray-300 hover:text-white focus:outline-none focus:ring-2 focus:ring-white"
+              >
+                <span class="absolute -inset-2.5"></span>
+                <span class="sr-only">Close panel</span>
+                <svg
+                  class="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  aria-hidden="true"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              </button>
+            </div>
+
+            <div
+              class="flex modal flex-col overflow-y-scroll bg-white py-6 shadow-xl"
+            >
+              <div class="px-4 sm:px-6">
+                <h2
+                  class="text-base font-semibold leading-6 text-gray-900"
+                  id="slide-over-title"
+                >
+                  CREATE PRODUCT
+                </h2>
+              </div>
+              <div class="relative mt-6 flex-1 px-4 sm:px-6">
+                <div class="relative p-4 w-full max-w-md max-h-full">
+                  <!-- Modal content -->
+                  <div
+                    class="relative bg-white rounded-lg shadow dark:bg-gray-700"
+                  >
+                    <form
+                      class="p-4 md:p-5"
+                      [formGroup]="createProductForm"
+                      (ngSubmit)="createProduct()"
+                    >
+                      <div class="grid gap-4 mb-4 grid-cols-2">
+                        <div class="col-span-2">
+                          <label
+                            for="name"
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                            >Name</label
+                          >
+                          <input
+                            type="text"
+                            formControlName="name"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                            placeholder="Product name"
+                            required=""
+                          />
+                        </div>
+
+                        <div class="col-span-2 sm:col-span-1">
+                          <label
+                            for="price"
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                            >Price</label
+                          >
+                          <input
+                            data-cy="price"
+                            type="number"
+                            formControlName="price"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                            placeholder="$2999"
+                            required=""
+                          />
+                        </div>
+
+                        <div class="col-span-2">
+                          <label
+                            for="description"
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                            >Description</label
+                          >
+                          <textarea
+                            data-cy="description"
+                            formControlName="shortDescription"
+                            rows="4"
+                            class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            placeholder="Write product description here"
+                          ></textarea>
+                        </div>
+                        <div class="col-span-2">
+                          <label
+                            for="image"
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                            >Image</label
+                          >
+                          <input
+                            type="text"
+                            formControlName="image"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                            placeholder="Image url"
+                            required=""
+                          />
+                        </div>
+                      </div>
+                      <button
+                        type="submit"
+                        class="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                      >
+                        <svg
+                          class="me-1 -ms-1 w-5 h-5"
+                          fill="currentColor"
+                          viewBox="0 0 20 20"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            fill-rule="evenodd"
+                            d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
+                            clip-rule="evenodd"
+                          ></path>
+                        </svg>
+                        Add Product
+                      </button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <app-update-user *ngIf="!isFormVisible"></app-update-user>
+</body>
+
+<app-footer></app-footer>

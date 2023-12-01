@@ -1,0 +1,28 @@
+<div class="flex fixed z-10 nav flex-col md:flex-row justify-between items-center p-4 border-b-2 border-gray-300 pb-3 mb-5 w-full">
+  <a *ngIf="!loggedIn">
+    <h1 class="text-3xl font-bold text-blue-500">Shoppify.com</h1>
+  </a>
+
+  <div class="flex items-center space-x-4 mt-4 md:mt-0">
+    <ng-container>
+      <!-- Responsive Navigation Menu -->
+      <input type="checkbox" id="menu-toggle" class="hidden">
+      <label for="menu-toggle" class="cursor-pointer md:hidden">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M4 6h16M4 12h16m-7 6h7"></path>
+        </svg>
+      </label>
+
+      <div *ngIf="!loggedIn" class="hidden md:flex items-center mx-4 space-x-4">
+        <a routerLink="/" class="nav-link rounded-md hover:bg-blue-600 hover:text-white p-1">Home</a>
+        <a routerLink="/about" class="nav-link rounded-md hover:bg-blue-600 hover:text-white p-1">About</a>
+        <a routerLink="/sign" class="nav-link rounded-md hover:bg-blue-600 hover:text-white p-1">Register</a>
+        <a routerLink="/login" class="nav-link rounded-md hover:bg-blue-600 hover:text-white p-1">Login</a>
+      </div>
+    </ng-container>
+    <ng-template>
+    </ng-template>
+  </div>
+</div>
