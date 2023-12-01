@@ -4,4 +4,6 @@ export interface Product {
     shortDescription: string;
     price: number;
     image: string;
+    message?:string
+    success?: string
 }

@@ -22,9 +22,9 @@ describe('ProductService', () => {
   });
 
 
-  // Test for createProduct method
+ 
   it('should create a product', () => {
-    const mockProduct: Product[] = 
+    const mockProduct: any = 
       [
         {
           productID: "1D8DE3C6-C6AF-4210-A006-FBAAF9706CF8",
@@ -37,8 +37,8 @@ describe('ProductService', () => {
     
 
     service.createProduct(mockProduct).subscribe((res) => {
-      expect(res).toEqual({"success": true})
-      expect(res).toEqual({"message": "Product added successfullyly."})
+        expect(res).toEqual({"success": "true",
+          "message": "Product added successfullyly."})
         
     });
 
@@ -88,8 +88,10 @@ describe('ProductService', () => {
     }
 
     service.updateProductById(mockProductID, mockUpdatedProduct).subscribe((res) => {
-      expect(res).toEqual({"success": true})
-      expect(res).toEqual({"message": "Product updated successfullyly."})
+ 
+      expect(res.success).toBe("true");
+      expect(res.message).toBe('Product updated successfullyly.');
+     
     });
 
     const req = httpMock.expectOne(`http://localhost:3500/products/update/${mockProductID}`);
@@ -110,7 +112,7 @@ describe('ProductService', () => {
         image: "https://cdn.pixabay.com/photo/2014/08/05/10/27/iphone-410311_640.jpg"
       }
     ]
-    service.getSingleProduct(mockProductID).subscribe(() => {
+    service.getSingleProduct(mockProductID).subscribe((product) => {
       expect(product).toEqual(mockedSingleProduct);
     });
 

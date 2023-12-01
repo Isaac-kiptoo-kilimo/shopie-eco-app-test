@@ -13,7 +13,7 @@ describe('UserService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
-      providers: [UserService,{ provide: AuthService, useValue: authSpy }]
+      providers: [UserService,]
     });
     service = TestBed.inject(UserService);
     authService = TestBed.inject(AuthService) as jasmine.SpyObj<AuthService>;
@@ -58,7 +58,7 @@ describe('UserService', () => {
 
 
   it('should check user details', () => {
-    const mockUser: User =[
+    const mockUser: any =[
       {
         userID: "18b68e48-9d87-4c0c-abe0-5f3c069a1a3a",
         fullName: "Mildred Ochieng",
@@ -96,7 +96,7 @@ describe('UserService', () => {
   });
 
   it('should initialize password reset', () => {
-    const mockUser = {
+    const mockUser : any= {
     email: "joshuaomondi3334@gmail.com" 
     }
     service.initializePasswordReset(mockUser);
@@ -108,7 +108,7 @@ describe('UserService', () => {
 
  
   it('should reset password', () => {
-    const mockUser: User ={
+    const mockUser: any ={
   email: "isaackilimok2@gmail.com",
   resetToken:"d299ae10-9188-4a2c-a145-b06562e454d9",
   newPassword:"12345678@ik" 
